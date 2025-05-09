@@ -2,6 +2,7 @@
 *.log
 *.o
 *.trs
+*~
 Makefile
 autom4te.cache/
 compile
