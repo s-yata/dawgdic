@@ -1,0 +1,13 @@
+.deps/
+*.log
+*.o
+*.trs
+Makefile
+autom4te.cache/
+compile
+config.*
+src/dawgdic-build
+src/dawgdic-find
+test/dawg-builder-test
+test/ranked-completer-test
+test-driver
