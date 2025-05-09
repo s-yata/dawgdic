@@ -32,7 +32,7 @@ class CommandOptions {
     return lexicon_file_name_;
   }
 
-  bool Parse(int argc, char *argv[]) {
+  bool Parse(int argc, const char *argv[]) {
     for (int i = 1; i < argc; ++i) {
       // Parses options.
       if (argv[i][0] == '-' && argv[i][1] != '\0') {
@@ -144,7 +144,7 @@ void CompleteKeys(const dawgdic::Dictionary &dic,
 
 }  // namespace
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
   CommandOptions options;
   if (!options.Parse(argc, argv)) {
     CommandOptions::ShowUsage(&std::cerr);
