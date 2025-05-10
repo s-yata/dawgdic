@@ -49,6 +49,9 @@ class Dictionary {
     }
 
     SizeType size = static_cast<SizeType>(base_size);
+    if (size < 256 || size % 256 != 0) {
+      return false;
+    }
     std::vector<DictionaryUnit> units_buf(size);
     if (!input->read(reinterpret_cast<char *>(&units_buf[0]),
                      sizeof(DictionaryUnit) * size)) {
