@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <random>
 #include <string>
 #include <vector>
 
@@ -16,6 +17,9 @@ namespace {
 static const std::size_t NUM_KEYS = 1 << 16;
 static const std::size_t KEY_LENGTH = 6;
 static const int MAX_VALUE = 100;
+
+std::random_device seed_gen;
+std::mt19937 random_engine(seed_gen());
 
 class Comparer {
  public:
@@ -36,7 +40,7 @@ void GenerateRandomKeys(std::size_t num_keys, std::size_t length,
   keys->resize(num_keys);
   for (std::size_t key_id = 0; key_id < num_keys; ++key_id) {
     for (std::size_t i = 0; i < length; ++i) {
-      key[i] = 'A' + (std::rand() % ('Z' - 'A' + 1));
+      key[i] = 'A' + (random_engine() % ('Z' - 'A' + 1));
     }
     (*keys)[key_id].assign(&key[0], length);
   }
@@ -51,7 +55,7 @@ void GenerateRandomKeys(std::size_t num_keys, std::size_t length,
 void GenerateRandomValues(std::size_t num_values, std::vector<int> *values) {
   values->resize(num_values);
   for (std::size_t i = 0; i < num_values; ++i) {
-    (*values)[i] = std::rand() % MAX_VALUE;
+    (*values)[i] = random_engine() % MAX_VALUE;
   }
 }
 
