@@ -141,9 +141,6 @@ bool TestCompleter(const dawgdic::Dictionary &dic,
 }  // namespace
 
 int main() {
-  // Initializes random number generator's seed.
-  std::srand(std::time(NULL));
-
   std::vector<std::string> keys;
   GenerateRandomKeys(NUM_KEYS, KEY_LENGTH, &keys);
   std::cerr << "no. unique keys: " << keys.size() << std::endl;
